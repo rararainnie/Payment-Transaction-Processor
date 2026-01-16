@@ -1,5 +1,5 @@
 **Note:** This project was developed with the assistance of **Gemini Pro**.
-# Payment Transaction Processor
+# Part A coding task: Payment Transaction Processor
 A Java CLI tool to validate transactions, detect duplicates, and generate a summary report.
 
 ---
@@ -48,3 +48,29 @@ mvn test
   - Pro: Simple logic for grouping and sorting.
   - Con: High memory usage for very large files (Stream/DB would be better for production).
 - Validation Strategy: The app skips invalid records and reports them (Fail-Safe) rather than stopping execution immediately.
+
+--- 
+
+# Part B Applied Scenario: Payment flow
+<img width="672" height="675" alt="image" src="https://github.com/user-attachments/assets/7d7aff97-bca1-4c27-a5ad-68edbeb4d24b" />
+
+## 1. Key Steps
+- Create Order: Save order in memory with PENDING status to reserve stock.
+- Payment Intent: Backend requests an Intent from the Gateway (locking amount server-side) to get a payment URL.
+- Redirect: Send user to the Gateway’s secure hosted page to pay.
+- Webhook Callback: Receive async notification from Gateway (the source of truth).
+- Update State: Verify webhook and update order to PAID or FAILED.
+
+## 2. Handling Failures & Reliability
+- Webhook Retries: Respond with 200 OK immediately upon receipt to prevent Gateway timeouts.
+- Idempotency: Track event_id. If a duplicate ID arrives, ignore it to prevent double processing.
+- Timeout: Background job checks PENDING orders >30 mins. If unpaid, mark as EXPIRED.
+- Reconciliation: Nightly job compares Gateway reports with our records to ensure data consistency.
+
+## 3. Security Considerations
+- No Sensitive Data: Never touch PAN/CVV. Use hosted pages to reduce PCI scope.
+- Secure Storage: API keys are loaded from Environment Variables, never hardcoded.
+- Signature Verification: Validate HMAC-SHA256 signatures on all webhooks to prevent spoofing
+
+## 4. Monitoring (Bonus)
+Key Metrics: Track Payment Success Rate, Webhook Error Rate, and End-to-End Latency.
