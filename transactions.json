@@ -1,0 +1,66 @@
+[
+  {
+    "ID": "TX1001",
+    "Ref": "REF01",
+    "Amount": 1500.0,
+    "Currency": "THB",
+    "Status": "SUCCESS",
+    "Date": "2023-10-01T10:00:00Z"
+  },
+  {
+    "ID": "TX1001",
+    "Ref": "REF01",
+    "Amount": 1500.0,
+    "Currency": "THB",
+    "Status": "SUCCESS",
+    "Date": "2023-10-01T10:05:00Z"
+  },
+  {
+    "ID": "TX1002",
+    "Ref": "REF01",
+    "Amount": 1500.0,
+    "Currency": "THB",
+    "Status": "SUCCESS",
+    "Date": "2023-10-01T12:00:00Z"
+  },
+  {
+    "ID": "TX1003",
+    "Ref": "REF02",
+    "Amount": 2000.0,
+    "Currency": "USD",
+    "Status": "FAILED",
+    "Date": "2023-10-01T15:30:00Z"
+  },
+  {
+    "ID": "TX1004",
+    "Ref": "REF03",
+    "Amount": 0,
+    "Currency": "THB",
+    "Status": "SUCCESS",
+    "Date": "2023-10-01T16:00:00Z"
+  },
+  {
+    "ID": "TX1005",
+    "Ref": "REF04",
+    "Amount": 500.0,
+    "Currency": "USD",
+    "Status": "PENDING",
+    "Date": "2023-10-02T09:00:00Z"
+  },
+  {
+    "ID": "TX1006",
+    "Ref": "REF05",
+    "Amount": 100.0,
+    "Currency": "THB",
+    "Status": "SUCCESS",
+    "Date": "2023-10-02T25:00:00Z"
+  },
+  {
+    "ID": null,
+    "Ref": "REF06",
+    "Amount": 300.0,
+    "Currency": "THB",
+    "Status": "SUCCESS",
+    "Date": "2023-10-02T10:00:00Z"
+  }
+]
